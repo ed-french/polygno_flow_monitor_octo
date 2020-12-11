@@ -1,0 +1,69 @@
+<!--
+<div class="input-append">
+    <input type="text" class="input-xxlarge" data-bind="value: newUrl">
+    <button class="btn btn-primary" data-bind="click: goToUrl">{{ _('Go') }}</button>
+</div>
+-->
+
+
+<div id="polygno_not_ready">
+    <h2>Not ready</h2>
+    <p>You need to set the url of your flow monitor in settings above, save it, then refresh this page.</p>
+    <p>Press the lower button on the front of the Polygno Flow Monitor to see the current url.</p>
+</div>
+
+<div id="polygno_ready">
+
+<a id="polygnoflowmonitorurl" data-bind="attr: {href : currentUrl}" target="_new">View in separate window.</span>
+<input type="hidden" id="polygnoflowmonitorurli" data-bind="attr: {value:currentUrl}">
+<iframe id="polygno_iframe" style="width: 100%; height: 600px; border: 1px solid #808080"></iframe>
+</div>
+
+
+
+<script>
+
+function setPage(url)
+{
+    var readybit=document.getElementById("polygno_ready");
+    var notreadybit=document.getElementById("polygno_not_ready");
+    if (url=="...")
+    {// No polygno url set yet
+        console.log("No URL set");
+        notreadybit.style.display="block";
+        readybit.style.display="none";
+    } else {
+        console.log("URL set");
+        notreadybit.style.display="none";
+        readybit.style.display="block";
+        document.getElementById("polygno_iframe").src=url;
+
+    }
+}
+
+function processWhenReady()
+{
+    console.log("is the page ready for magic?");
+    var url_holder=document.getElementById("polygnoflowmonitorurli");
+    if (url_holder)
+    {
+        var url=url_holder.value;
+        if (url && url.length>2)
+        {
+            console.log("Found url now as: "+url);
+            setPage(url);
+            return;
+        }
+    }
+    // Not ready yet
+    console.log("not ready...");
+    window.setTimeout(processWhenReady,1000);// Try again after 1 second
+
+}
+
+
+
+// Wait for the page to be ready
+processWhenReady();
+
+</script>

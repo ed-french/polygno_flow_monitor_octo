@@ -1,0 +1,4 @@
+include README.md
+recursive-include polygno_octoprint_flow_monitor/templates *
+recursive-include polygno_octoprint_flow_monitor/translations *
+recursive-include polygno_octoprint_flow_monitor/static *
