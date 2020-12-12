@@ -1,6 +1,6 @@
 # polygno_octoprint_flow_monitor
 
-**TODO:** Describe what your plugin does.
+Integrates the Polygno Flow Monitor information into the webpage for Octoprint.
 
 ## Setup
 
@@ -9,9 +9,5 @@ or manually using this URL:
 
     https://github.com/ed-french/polygno_octoprint_flow_monitor/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
+Once installed, you will need to go to settings and put the URL on your local network of the Flow Insights Monitor in. If you can't find this it is always on the small display between prints, or during a print you can find it by pressing the bottom button to the right of the display.
 
-## Configuration
-
-**TODO:** Describe your plugin's configuration options (if any).
